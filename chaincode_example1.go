@@ -73,7 +73,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 
 	return nil, errors.New("Received unknown function invocation: " + function)
 }
-func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) write(stub shim.ChaincodeStub, args []string) ([]byte, error) {
 	
 	var A, B string    // Entities
 	var Aval, Bval int // Values
@@ -113,7 +113,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 }
 
 // Transaction makes payment of X units from A to B
-func (t *SimpleChaincode) transfer(stub *shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) transfer(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	fmt.Println("Running transfer")
 	
 	var A, B string    // Entities
@@ -168,7 +168,7 @@ func (t *SimpleChaincode) transfer(stub *shim.ChaincodeStubInterface, args []str
 }
 
 // Deletes an entity from state
-func (t *SimpleChaincode) delete(stub *shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) delete(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	fmt.Println("Running delete")
 	
 	if len(args) != 1 {
